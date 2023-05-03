@@ -31,31 +31,44 @@ public abstract class Recipe {
         this.name = name;
         this.description = description;
         this.size = size;
+
+        categories.add(Category.NONE);
     }
 
     public void addIngredient(Ingredient ingredient) {
-
+        ingredients.add(ingredient);
     }
 
     public void addCategory(Category category) {
+        categories.remove(Category.NONE);
+
+        if (categories.size() < 3) {
+            categories.add(category);
+        } else {
+            System.out.println("You can't add more than 3 categories");
+        }
 
     }
 
 
     public void addTag(Tag tag) {
-
+        if (tags.size() < 3) {
+            tags.add(tag);
+        } else {
+            System.out.println("You can't add more than 3 tags");
+        }
     }
 
     public void removeIngredient(Ingredient ingredient) {
-
+        ingredients.remove(ingredient);
     }
 
     public void removeCategory(Category category) {
-
+        categories.remove(category);
     }
 
     public void removeTag(Tag tag) {
-
+        tags.remove(tag);
     }
 
     public Long getId() {
