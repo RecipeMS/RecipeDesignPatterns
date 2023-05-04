@@ -44,6 +44,7 @@ public class Main {
 
         soup.addIngredient(domates);
         soup.addIngredient(peynir);
+        book.removeRecipe(pizza);
 
         System.out.println("Normal insan yerse " + pizza.getSize() + " porsiyon yer.");
 

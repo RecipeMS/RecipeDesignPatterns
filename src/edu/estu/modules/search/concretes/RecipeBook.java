@@ -102,6 +102,11 @@ public class RecipeBook {
     public void addRecipe(Recipe recipe) {
         recipeList.add(recipe);
     }
+
+    // remove recipe from recipe list
+    public void removeRecipe(Recipe recipe) {
+        recipeList.remove(recipe);
+    }
     // get recipe list
     public List<Recipe> getRecipes() {
         return recipeList;
