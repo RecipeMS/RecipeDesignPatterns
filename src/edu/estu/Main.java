@@ -2,16 +2,15 @@ package edu.estu;
 
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Category;
+import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
+import edu.estu.entities.concretes.Unit;
 import edu.estu.modules.creation.abstracts.RecipeFactory;
 import edu.estu.modules.creation.concretes.AsianRecipeFactory;
 import edu.estu.modules.modification.abstracts.RecipeSizeDecorator;
 import edu.estu.modules.modification.concretes.RecipeChildMenuSizeDecorator;
 import edu.estu.modules.modification.concretes.RecipeHungryBuddyDecorator;
 import edu.estu.modules.search.concretes.RecipeBook;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,8 +19,8 @@ public class Main {
         RecipeFactory recipeFactory = new AsianRecipeFactory();
         Recipe pizza = recipeFactory.createRecipes("Pizza", "yap işte!", 1);
         Recipe pasta = recipeFactory.createRecipes("Pasta", "yap işte!", 1);
+        Recipe soup = recipeFactory.createRecipes("Soup", "yap işte!", 1);
 
-        recipeFactory.getRecipes().forEach(recipe -> System.out.println(recipe.getName() + " " + recipe.getDescription() + " " + recipe.getType()));
         pizza.addCategory(Category.BREAKFAST);
         pizza.addCategory(Category.LUNCH);
         pizza.addCategory(Category.DINNER);
@@ -31,6 +30,20 @@ public class Main {
         pasta.addCategory(Category.DINNER);
         pasta.addTag(Tag.SWEET);
         pasta.addTag(Tag.SALTY);
+
+        Ingredient domates = new Ingredient("Domates", 1, Unit.BOTTLE);
+        Ingredient peynir = new Ingredient("Peynir", 1, Unit.BOTTLE);
+        Ingredient hamur = new Ingredient("Hamur", 1, Unit.CAN);
+
+        pizza.addIngredient(domates);
+        pizza.addIngredient(peynir);
+        pizza.addIngredient(hamur);
+
+        pasta.addIngredient(domates);
+        pasta.addIngredient(peynir);
+
+        soup.addIngredient(domates);
+        soup.addIngredient(peynir);
 
         System.out.println("Normal insan yerse " + pizza.getSize() + " porsiyon yer.");
 
@@ -51,5 +64,9 @@ public class Main {
         book.searchRecipeByTag(Tag.SWEET);
         System.out.println("/////////////////////////////// Search by Category ///////////////////////////////");
         book.searchRecipeByCategory(Category.BREAKFAST);
+        System.out.println("/////////////////////////////// Search by Ingredient ///////////////////////////////");
+        book.searchRecipeByIngredient("Domates");
+        book.searchRecipeByIngredient("Patates");
+
     }
 }

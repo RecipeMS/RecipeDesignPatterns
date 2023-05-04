@@ -2,6 +2,7 @@ package edu.estu.modules.search.concretes;
 
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Category;
+import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
 
 import java.util.LinkedList;
@@ -27,8 +28,13 @@ public class RecipeBook {
                 result.add(recipe);
             }
         }
-        for (Recipe recipe : result) {
-            System.out.println(recipe.getName() + " " + recipe.getDescription() + " " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+        if (result.isEmpty())
+            System.out.println("No recipe found");
+
+        else {
+            for (Recipe recipe : result) {
+                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+            }
         }
     }
 
@@ -42,8 +48,13 @@ public class RecipeBook {
                 }
             }
         }
-        for (Recipe recipe : result) {
-            System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+        if (result.isEmpty())
+            System.out.println("No recipe found");
+
+        else {
+            for (Recipe recipe : result) {
+                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+            }
         }
     }
 
@@ -57,8 +68,33 @@ public class RecipeBook {
                 }
             }
         }
-        for (Recipe recipe : result) {
-            System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+        if (result.isEmpty())
+            System.out.println("No recipe found");
+
+        else {
+            for (Recipe recipe : result) {
+                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+            }
+        }
+    }
+
+    // Search recipe by ingredient and print the result
+    public void searchRecipeByIngredient(String ingredient) {
+        List<Recipe> result = new LinkedList<>();
+        for (Recipe recipe : recipeList) {
+            for (Ingredient recipeIngredient : recipe.getIngredients()) {
+                if (recipeIngredient.getName().toLowerCase().contains(ingredient.toLowerCase())) {
+                    result.add(recipe);
+                }
+            }
+        }
+        if(result.isEmpty())
+            System.out.println("No recipe found");
+
+        else {
+            for (Recipe recipe : result) {
+                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+            }
         }
     }
 
