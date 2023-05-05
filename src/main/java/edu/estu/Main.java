@@ -60,7 +60,7 @@ public class Main {
 
         System.out.println("Çocuk insan yerse " + sizeDecorator3.getSize() + " porsiyon yer.");
         System.out.println("/////////////////////////////// Search by Name ///////////////////////////////");
-        book.searchRecipeByName("za");
+        book.searchRecipeByName("pizza");
         System.out.println("/////////////////////////////// Search by Tag ///////////////////////////////");
         book.searchRecipeByTag(Tag.SWEET);
         System.out.println("/////////////////////////////// Search by Category ///////////////////////////////");
@@ -68,6 +68,8 @@ public class Main {
         System.out.println("/////////////////////////////// Search by Ingredient ///////////////////////////////");
         book.searchRecipeByIngredient("Domates");
         book.searchRecipeByIngredient("Patates");
+
+
 
     }
 }

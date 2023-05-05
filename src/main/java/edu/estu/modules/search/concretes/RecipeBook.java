@@ -98,6 +98,7 @@ public class RecipeBook {
         }
     }
 
+    //Remove addRecipe and removeRecipe to modification module
     // add recipe to recipe list
     public void addRecipe(Recipe recipe) {
         recipeList.add(recipe);
