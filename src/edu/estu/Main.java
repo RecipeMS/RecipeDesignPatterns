@@ -11,10 +11,16 @@ import edu.estu.modules.modification.abstracts.RecipeSizeDecorator;
 import edu.estu.modules.modification.concretes.RecipeChildMenuSizeDecorator;
 import edu.estu.modules.modification.concretes.RecipeHungryBuddyDecorator;
 import edu.estu.modules.search.concretes.RecipeBook;
+import edu.estu.modules.search.concretes.RecipeSearch;
 
 public class Main {
     public static void main(String[] args) {
+
         RecipeBook book = RecipeBook.getInstance();
+        RecipeSearch search = new RecipeSearch();
+
+
+
 
         RecipeFactory recipeFactory = new AsianRecipeFactory();
         Recipe pizza = recipeFactory.createRecipes("Pizza", "yap işte!", 1);
@@ -60,14 +66,23 @@ public class Main {
 
         System.out.println("Çocuk insan yerse " + sizeDecorator3.getSize() + " porsiyon yer.");
         System.out.println("/////////////////////////////// Search by Name ///////////////////////////////");
-        book.searchRecipeByName("za");
+        search.searchRecipeByName("pasta");
         System.out.println("/////////////////////////////// Search by Tag ///////////////////////////////");
-        book.searchRecipeByTag(Tag.SWEET);
+        search.searchRecipeByTag(Tag.SWEET);
         System.out.println("/////////////////////////////// Search by Category ///////////////////////////////");
-        book.searchRecipeByCategory(Category.BREAKFAST);
+        search.searchRecipeByCategory(Category.BREAKFAST);
         System.out.println("/////////////////////////////// Search by Ingredient ///////////////////////////////");
-        book.searchRecipeByIngredient("Domates");
-        book.searchRecipeByIngredient("Patates");
+        search.searchRecipeByIngredient("Domates");
+        search.searchRecipeByIngredient("Patates");
+
+
+
+
+        //show all my recipees
+        System.out.println("All recipes : ");
+        book.getAllRecipes();
+
+
 
     }
 }

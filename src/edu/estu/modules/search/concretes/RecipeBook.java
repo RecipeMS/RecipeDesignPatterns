@@ -14,6 +14,10 @@ public class RecipeBook {
     private RecipeBook() {
     }
 
+    public List<Recipe> getRecipeList() {
+        return recipeList;
+    }
+
     public static RecipeBook getInstance() {
         if (instance == null) {
             instance = new RecipeBook();
@@ -21,82 +25,19 @@ public class RecipeBook {
         return instance;
     }
 
-    public void searchRecipeByName(String name) {
-        List<Recipe> result = new LinkedList<>();
-        for (Recipe recipe : recipeList) {
-            if (recipe.getName().toLowerCase().contains(name.toLowerCase())) {
-                result.add(recipe);
-            }
-        }
-        if (result.isEmpty())
-            System.out.println("No recipe found");
-
-        else {
-            for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
-            }
+    //Returns all recipes
+    public void getAllRecipes() {
+        for ( Recipe recipe : recipeList) {
+System.out.println(
+        recipe.getName()
+        + "  " + recipe.getDescription()
+        + "  " + recipe.getSize() + " "
+        + recipe.getCategories() + " "
+        + recipe.getTags());
         }
     }
 
-    // Search recipe by tag and print the result
-    public void searchRecipeByTag(Tag tag) {
-        List<Recipe> result = new LinkedList<>();
-        for (Recipe recipe : recipeList) {
-            for (Tag recipeTag : recipe.getTags()) {
-                if (recipeTag.name().contains(tag.name().toUpperCase())) {
-                    result.add(recipe);
-                }
-            }
-        }
-        if (result.isEmpty())
-            System.out.println("No recipe found");
 
-        else {
-            for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
-            }
-        }
-    }
-
-    // Search recipe by category and print the result
-    public void searchRecipeByCategory(Category category) {
-        List<Recipe> result = new LinkedList<>();
-        for (Recipe recipe : recipeList) {
-            for (Category recipeCategory : recipe.getCategories()) {
-                if (recipeCategory.name().toLowerCase().contains(category.name().toLowerCase())) {
-                    result.add(recipe);
-                }
-            }
-        }
-        if (result.isEmpty())
-            System.out.println("No recipe found");
-
-        else {
-            for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
-            }
-        }
-    }
-
-    // Search recipe by ingredient and print the result
-    public void searchRecipeByIngredient(String ingredient) {
-        List<Recipe> result = new LinkedList<>();
-        for (Recipe recipe : recipeList) {
-            for (Ingredient recipeIngredient : recipe.getIngredients()) {
-                if (recipeIngredient.getName().toLowerCase().contains(ingredient.toLowerCase())) {
-                    result.add(recipe);
-                }
-            }
-        }
-        if(result.isEmpty())
-            System.out.println("No recipe found");
-
-        else {
-            for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
-            }
-        }
-    }
 
     // add recipe to recipe list
     public void addRecipe(Recipe recipe) {
@@ -107,9 +48,6 @@ public class RecipeBook {
     public void removeRecipe(Recipe recipe) {
         recipeList.remove(recipe);
     }
-    // get recipe list
-    public List<Recipe> getRecipes() {
-        return recipeList;
-    }
+
 
 }
