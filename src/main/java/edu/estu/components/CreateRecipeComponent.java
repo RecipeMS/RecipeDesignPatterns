@@ -13,7 +13,7 @@ public class CreateRecipeComponent {
     static Scanner scanner = new Scanner(System.in);
     public static void handleCreateRecipe(){
         System.out.println("************************** Create Recipe ************************** ");
-        Recipe recipe;
+        Recipe recipe = null;
 
         RecipeStyleComponent recipeStyleComponent = new RecipeStyleComponent();
         RecipeFactory recipeFactory = recipeStyleComponent.getRecipeStyle();
@@ -31,9 +31,19 @@ public class CreateRecipeComponent {
         System.out.print("Please input the size of the recipe : ");
 //                int size = scanner.nextInt();
 //                scanner.nextLine();
-        int size = Integer.parseInt(System.console().readLine());
+        int size = 0;
+        try {
+            size = Integer.parseInt(System.console().readLine());
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again.");
+        }
 
-        recipe = recipeFactory.createRecipes(name, description, size);
+        try {
+            recipe = recipeFactory.createRecipes(name, description, size);
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again.");
+        }
+        //recipe = recipeFactory.createRecipes(name, description, size);
         addCategories(recipe);
         addTags(recipe);
         addIngredients(recipe);
@@ -62,14 +72,28 @@ public class CreateRecipeComponent {
     private static Ingredient createIngredient(String name){
 
         System.out.println("Please input the amount of the ingredient: ");
-        double amount = scanner.nextDouble();
+        double amount;
+        try {
+            amount = scanner.nextDouble();
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again.");
+            return null;
+        }
+
 
         Unit unit = null;
         System.out.println("Please input the unit of the ingredient: ");
         System.out.println("|   1. BOTTLE               2. CAN                  3. CUP      |");
         System.out.println("|   4. TABLESPOON           5. TEASPOON             6. KILOGRAM |");
         System.out.println("|   7. LITER                8. PIECE                            |");
-        int choice = Integer.parseInt(System.console().readLine());
+        int choice;
+        try {
+            choice = Integer.parseInt(System.console().readLine());
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again (choose 1-8).");
+            return null;
+        }
+
         switch (choice) {
             case 1:
                 unit = Unit.BOTTLE;

@@ -22,7 +22,12 @@ public class RecipeStyleComponent {
         System.out.println("==================================");
 
         System.out.print("Enter your choice: ");
-        int choice = scanner.nextInt();
+        int choice = 0;
+        try {
+            choice = Integer.parseInt(System.console().readLine());
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again.");
+        }
 
         switch (choice){
             case 1:

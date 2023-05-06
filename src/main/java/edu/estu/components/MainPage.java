@@ -26,7 +26,12 @@ public void showMainPage() {
 
                 System.out.print("Enter your choice: ");
                 //int choice = scanner.nextInt();
-                int choice = Integer.parseInt(System.console().readLine());
+                int choice = 0;
+                try {
+                         choice = Integer.parseInt(System.console().readLine());
+                } catch (Exception e) {
+                        System.out.println("Invalid choice, please try again.");
+                }
 
                 switch (choice) {
                         case 1:
@@ -37,6 +42,7 @@ public void showMainPage() {
                         case 2:
                                 // handle option 2
                                 System.out.println("Search Recipe selected");
+                                SearchRecipeComponent.handleSearchRecipe();
                                 break;
                         case 3:
                                 // handle option 3
