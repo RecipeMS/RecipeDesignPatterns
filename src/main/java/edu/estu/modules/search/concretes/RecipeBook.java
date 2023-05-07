@@ -5,6 +5,7 @@ import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,9 +44,21 @@ public class RecipeBook {
             System.out.println("#                      Ingredients                       #");
             getIngredients(recipe);
             System.out.println("#                                                        #");
+            getInstructions(recipe);
             System.out.println("##########################################################");
         }
     }
+
+    private void getInstructions(Recipe recipe) {
+        System.out.println("#                      Instructions                      #");
+        ArrayList<String> instructions = recipe.getInstructions();
+        for (int i = 0; i < instructions.size(); i++) {
+            String instruction = instructions.get(i);
+            System.out.println("#                                                        #");
+            System.out.println("# " + (i+1) +" -> "+ instruction);
+        }
+    }
+
     private void getIngredients(Recipe recipe) {
         for (Ingredient ingredient : recipe.getIngredients()) {
             System.out.println("#                                                        #");

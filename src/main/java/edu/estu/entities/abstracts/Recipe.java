@@ -5,10 +5,7 @@ import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
 import edu.estu.modules.creation.concretes.RecipeType;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public abstract class Recipe {
     private Long id;
@@ -27,12 +24,26 @@ public abstract class Recipe {
 
     private final Set<Tag> tags = new HashSet<>(3);
 
+    private ArrayList<String> instructions = new ArrayList<>();
+
     public Recipe(String name, String description, int size) {
         this.name = name;
         this.description = description;
         this.size = size;
 
         categories.add(Category.NONE);
+    }
+
+    public void addInstruction(String instruction) {
+        instructions.add(instruction);
+    }
+
+    public ArrayList<String> getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(ArrayList<String> instructions) {
+        this.instructions = instructions;
     }
 
     public void addIngredient(Ingredient ingredient) {
