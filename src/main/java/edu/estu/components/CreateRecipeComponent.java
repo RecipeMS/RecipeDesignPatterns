@@ -47,9 +47,22 @@ public class CreateRecipeComponent {
         addCategories(recipe);
         addTags(recipe);
         addIngredients(recipe);
+        addInstructions(recipe);
 
         System.out.println("Recipe created successfully!");
 
+    }
+
+    private static Recipe addInstructions(Recipe recipe) {
+            System.out.println("************************* Add Instructions *************************");
+            System.out.println("Add instruction and click enter (write done when you are done) ");
+            String instruction = "";
+        while (!instruction.equals("done")) {
+            instruction = System.console().readLine();
+            if (instruction == "done") break;
+            recipe.addInstruction(instruction);
+            }
+            return recipe;
     }
 
     private static Recipe addIngredients(Recipe recipe) {
