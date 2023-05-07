@@ -28,12 +28,28 @@ public class RecipeBook {
     //Returns all recipes
     public void getAllRecipes() {
         for ( Recipe recipe : recipeList) {
-            System.out.println(
-                    recipe.getName()
-                            + "  " + recipe.getDescription()
-                            + "  " + recipe.getSize() + " "
-                            + recipe.getCategories() + " "
-                            + recipe.getTags());
+            System.out.println("##########################################################");
+            System.out.println("#                    "+recipe.getName()            );
+            System.out.println("#--------------------------------------------------------#");
+            System.out.println("#   "+recipe.getDescription()                          );
+            System.out.println("#                                                        #");
+            System.out.println("#--------------------------------------------------------#");
+            System.out.println("#  Serve for "+recipe.getSize()+" people                  ");
+            System.out.println("#--------------------------------------------------------#");
+            System.out.println("#  Categories: " + recipe.getCategories()                  );
+            System.out.println("#--------------------------------------------------------#");
+            System.out.println("#        Tags: " + recipe.getTags()                        );
+            System.out.println("#--------------------------------------------------------#");
+            System.out.println("#                      Ingredients                       #");
+            getIngredients(recipe);
+            System.out.println("#                                                        #");
+            System.out.println("##########################################################");
+        }
+    }
+    private void getIngredients(Recipe recipe) {
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            System.out.println("#                                                        #");
+            System.out.println("# "+ingredient.getName() + " " + ingredient.getAmount() + " " + ingredient.getUnit());
         }
     }
 
