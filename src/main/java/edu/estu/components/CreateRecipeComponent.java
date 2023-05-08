@@ -141,8 +141,6 @@ public class CreateRecipeComponent {
         return new Ingredient(name, amount, unit);
     }
 
-
-
     private static Recipe addTags(Recipe recipe) {
         System.out.println("***************************** TAGS *****************************");
         System.out.println("Please input the tag of the recipe: ");
