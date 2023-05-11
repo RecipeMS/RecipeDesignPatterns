@@ -10,7 +10,7 @@ import java.util.List;
 public class ModifyRecipe {
     Recipe recipe;
 
-    ModifyRecipe(Recipe recipe) {
+    public ModifyRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
 

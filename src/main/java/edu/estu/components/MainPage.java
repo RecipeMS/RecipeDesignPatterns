@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class MainPage {
 
-public void showMainPage() {
+public static void showMainPage() {
 
         boolean quit = false;
 
@@ -62,6 +62,7 @@ public void showMainPage() {
                                         // quit the program
                                         System.out.println("Quitting the program...");
                                         quit = true;
+                                        break;
                         default:
                                 // handle invalid choice
                                 System.out.println("Invalid choice, please try again.");

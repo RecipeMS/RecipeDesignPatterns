@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class RecipeeCard {
     static void printRecipeCard(Recipe recipe, int RecipeIndex){
         System.out.println("##########################################################");
-        System.out.println("#       Recipe No: "+ RecipeIndex +" "+recipe.getName()    );
+        System.out.println("#       Recipe No: ("+ RecipeIndex +")   "+recipe.getName()    );
         System.out.println("#--------------------------------------------------------#");
         System.out.println("#   "+recipe.getDescription()                          );
         System.out.println("#                                                        #");

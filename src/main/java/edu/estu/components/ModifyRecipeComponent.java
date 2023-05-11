@@ -1,12 +1,14 @@
 package edu.estu.components;
 
 import edu.estu.entities.abstracts.Recipe;
+import edu.estu.entities.concretes.Ingredient;
+import edu.estu.modules.modification.concretes.ModifyRecipe;
 import edu.estu.modules.search.concretes.RecipeBook;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModifyRecipeComponent {
-    Recipe recipe = selectRecipeToModify();
     static void  handleModifyRecipe() {
         System.out.println("**************** Modify Recipe ****************");
         System.out.println("|   1. Modify Recipe Name                      |");
@@ -28,23 +30,27 @@ public class ModifyRecipeComponent {
             case 1:
                 // handle option 1
                 System.out.println("Modify Recipe Name selected");
-
+                modifyRecipeName();
                 break;
             case 2:
                 // handle option 2
                 System.out.println("Modify Recipe Description selected");
+                modifyRecipeDescription();
                 break;
             case 3:
                 // handle option 3
                 System.out.println("Modify Recipe Service Size selected");
+                modifyRecipeServiceSize();
                 break;
             case 4:
                 // handle option 4
                 System.out.println("Modify Recipe Ingredients selected");
+                modifyRecipeIngredients();
                 break;
             case 5:
                 // handle option 5
                 System.out.println("Modify Recipe Instructions selected");
+                modifyRecipeInstructions();
                 break;
             case 6:
                 // quit the program
@@ -58,10 +64,85 @@ public class ModifyRecipeComponent {
 
     }
 
-    private Recipe selectRecipeToModify() {
+    private static void modifyRecipeInstructions() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+        ArrayList<String> instructions = InstructionComponent.createInstructions();
 
 
-        return null;
+
+        modifyRecipe.modifyRecipeInstructions(instructions);
+        System.out.println("Recipe instructions modified successfully " );
+    }
+
+    private static void modifyRecipeIngredients() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+        List<Ingredient> ingredients = IngredientComponent.createIngredientList();
+
+        modifyRecipe.modifyRecipeIngredients(ingredients);
+        System.out.println("Recipe ingredients modified successfully " );
+    }
+
+    private static void modifyRecipeServiceSize() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+
+        System.out.println("Enter new service size: ");
+        int newServiceSize = 0;
+        try {
+            newServiceSize = Integer.parseInt(System.console().readLine());
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again.");
+        }
+        modifyRecipe.modifyRecipeSize(newServiceSize);
+        System.out.println("Recipe service size changed to: " + recipe.getSize());
+    }
+
+    private static void modifyRecipeDescription() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+
+
+        System.out.println("Enter new description: ");
+        String newDescription = System.console().readLine();
+        modifyRecipe.modifyRecipeDescription(newDescription);
+        System.out.println("Recipe description changed to: " + recipe.getDescription());
+    }
+
+    private static void modifyRecipeName() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+
+
+        System.out.println("Enter new name: ");
+        String newName = System.console().readLine();
+        modifyRecipe.modifyRecipeName(newName);
+        System.out.println("Recipe name changed to: " + recipe.getName());
+    }
+
+    private static Recipe selectRecipeToModify() {
+        RecipeBook recipeBook = RecipeBook.getInstance();
+        List<Recipe> recipeList = recipeBook.getRecipeList();
+        Recipe recipe = null;
+        RecipeLister.listAllRecipes();
+        System.out.println("Select the recipe you want to modify: ");
+        int choice = 0;
+        try {
+            choice = Integer.parseInt(System.console().readLine());
+        } catch (Exception e) {
+            System.out.println("Invalid choice, please try again.");
+        }
+
+
+        if(choice > recipeList.size() || choice < 0) {
+            System.out.println("Invalid choice, please try again.");
+            selectRecipeToModify();
+        }else {
+            recipe = recipeList.get(choice);
+        }
+
+        return recipe;
     }
 
 

@@ -36,6 +36,7 @@ public abstract class Recipe {
     }
 
 
+    //gerek kalmadi buna
     public void addInstruction(String instruction) {
         instructions.add(instruction);
     }

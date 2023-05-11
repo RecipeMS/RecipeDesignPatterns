@@ -89,9 +89,9 @@ public class Main {
 
 
         //show all my recipees
-        RecipeBook book = RecipeBook.getInstance();
-        System.out.println("All recipes : ");
-        RecipeLister.listAllRecipes();
+//        RecipeBook book = RecipeBook.getInstance();
+//        System.out.println("All recipes : ");
+//        RecipeLister.listAllRecipes();
 
 
 

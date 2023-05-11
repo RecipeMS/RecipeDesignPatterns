@@ -7,6 +7,8 @@ import edu.estu.entities.concretes.Tag;
 import edu.estu.entities.concretes.Unit;
 import edu.estu.modules.creation.abstracts.RecipeFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CreateRecipeComponent {
@@ -24,13 +26,10 @@ public class CreateRecipeComponent {
 
 
         System.out.println("Please input the description of the recipe : ");
-//                String description = scanner.nextLine();
         String description = System.console().readLine();
 
 
         System.out.print("Please input the size of the recipe : ");
-//                int size = scanner.nextInt();
-//                scanner.nextLine();
         int size = 0;
         try {
             size = Integer.parseInt(System.console().readLine());
@@ -54,92 +53,89 @@ public class CreateRecipeComponent {
     }
 
     private static Recipe addInstructions(Recipe recipe) {
-            System.out.println("************************* Add Instructions *************************");
-            System.out.println("Add instruction and click enter (write done when you are done) ");
-            String instruction = "";
-        while (!instruction.equals("done")) {
-            instruction = System.console().readLine();
-            if (instruction == "done") break;
-            recipe.addInstruction(instruction);
-            }
+//            System.out.println("************************* Add Instructions *************************");
+//            System.out.println("Add instruction and click enter (write done when you are done) ");
+//            String instruction = "";
+//        while (!instruction.equals("done")) {
+//            instruction = System.console().readLine();
+//            if (instruction == "done") break;
+//            recipe.addInstruction(instruction);
+//            }
+        ArrayList<String> instructions = InstructionComponent.createInstructions();
+        recipe.setInstructions(instructions);
+
+
             return recipe;
     }
 
     private static Recipe addIngredients(Recipe recipe) {
-        System.out.println("************************* Add Ingredients *************************");
-        System.out.println("Creating Ingredients.. (write done as the name when you are done) ");
+        List<Ingredient> ingredients = IngredientComponent.createIngredientList();
 
-        while (true) {
-            System.out.println("Please input the name of the ingredient: ");
-            String name = System.console().readLine();
-            if (name.equals("done")) {
-                break;
-            }
-            Ingredient ingredient = createIngredient(name);
+        for (Ingredient ingredient : ingredients) {
             recipe.addIngredient(ingredient);
         }
 
         return recipe;
     }
 
-    private static Ingredient createIngredient(String name){
-
-        System.out.println("Please input the amount of the ingredient: ");
-        double amount;
-        try {
-            amount = scanner.nextDouble();
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again.");
-            return null;
-        }
-
-
-        Unit unit = null;
-        System.out.println("Please input the unit of the ingredient: ");
-        System.out.println("|   1. BOTTLE               2. CAN                  3. CUP      |");
-        System.out.println("|   4. TABLESPOON           5. TEASPOON             6. KILOGRAM |");
-        System.out.println("|   7. LITER                8. PIECE                            |");
-        int choice;
-        try {
-            choice = Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again (choose 1-8).");
-            return null;
-        }
-
-        switch (choice) {
-            case 1:
-                unit = Unit.BOTTLE;
-                break;
-            case 2:
-                unit = Unit.CAN;
-                break;
-            case 3:
-                unit = Unit.CUP;
-                break;
-            case 4:
-                unit = Unit.TABLESPOON;
-                break;
-            case 5:
-                unit = Unit.TEASPOON;
-                break;
-            case 6:
-                unit = Unit.KILOGRAM;
-                break;
-            case 7:
-                unit = Unit.LITER;
-                break;
-            case 8:
-                unit = Unit.PIECE;
-                break;
-            default:
-                System.out.println("Invalid choice, please try again (choose 1-8).");
-                break;
-        }
-
-//                        ingredient = new Ingredient(name, amount, unit);
-        return new Ingredient(name, amount, unit);
-    }
+//    private static Ingredient createIngredient(String name){
+//
+//        System.out.println("Please input the amount of the ingredient: ");
+//        double amount;
+//        try {
+//            amount = scanner.nextDouble();
+//        } catch (Exception e) {
+//            System.out.println("Invalid choice, please try again.");
+//            return null;
+//        }
+//
+//
+//        Unit unit = null;
+//        System.out.println("Please input the unit of the ingredient: ");
+//        System.out.println("|   1. BOTTLE               2. CAN                  3. CUP      |");
+//        System.out.println("|   4. TABLESPOON           5. TEASPOON             6. KILOGRAM |");
+//        System.out.println("|   7. LITER                8. PIECE                            |");
+//        int choice;
+//        try {
+//            choice = Integer.parseInt(System.console().readLine());
+//        } catch (Exception e) {
+//            System.out.println("Invalid choice, please try again (choose 1-8).");
+//            return null;
+//        }
+//
+//        switch (choice) {
+//            case 1:
+//                unit = Unit.BOTTLE;
+//                break;
+//            case 2:
+//                unit = Unit.CAN;
+//                break;
+//            case 3:
+//                unit = Unit.CUP;
+//                break;
+//            case 4:
+//                unit = Unit.TABLESPOON;
+//                break;
+//            case 5:
+//                unit = Unit.TEASPOON;
+//                break;
+//            case 6:
+//                unit = Unit.KILOGRAM;
+//                break;
+//            case 7:
+//                unit = Unit.LITER;
+//                break;
+//            case 8:
+//                unit = Unit.PIECE;
+//                break;
+//            default:
+//                System.out.println("Invalid choice, please try again (choose 1-8).");
+//                break;
+//        }
+//
+////                        ingredient = new Ingredient(name, amount, unit);
+//        return new Ingredient(name, amount, unit);
+//    }
 
     private static Recipe addTags(Recipe recipe) {
         System.out.println("***************************** TAGS *****************************");
