@@ -26,45 +26,48 @@ public class RecipeBook {
         return instance;
     }
 
+    // Move all methods related to recipe listing and card to recipeCard and  RecipeLister applying Facide Pattern
+
     //Returns all recipes
-    public void getAllRecipes() {
-        for ( Recipe recipe : recipeList) {
-            System.out.println("##########################################################");
-            System.out.println("#                    "+recipe.getName()            );
-            System.out.println("#--------------------------------------------------------#");
-            System.out.println("#   "+recipe.getDescription()                          );
-            System.out.println("#                                                        #");
-            System.out.println("#--------------------------------------------------------#");
-            System.out.println("#  Serve for "+recipe.getSize()+" people                  ");
-            System.out.println("#--------------------------------------------------------#");
-            System.out.println("#  Categories: " + recipe.getCategories()                  );
-            System.out.println("#--------------------------------------------------------#");
-            System.out.println("#        Tags: " + recipe.getTags()                        );
-            System.out.println("#--------------------------------------------------------#");
-            System.out.println("#                      Ingredients                       #");
-            getIngredients(recipe);
-            System.out.println("#                                                        #");
-            getInstructions(recipe);
-            System.out.println("##########################################################");
-        }
-    }
+//    public void getAllRecipes() {
+//        for ( Recipe recipe : recipeList) {
+//            System.out.println("##########################################################");
+//            System.out.println("#                    "+recipe.getName()            );
+//            System.out.println("#--------------------------------------------------------#");
+//            System.out.println("#   "+recipe.getDescription()                          );
+//            System.out.println("#                                                        #");
+//            System.out.println("#--------------------------------------------------------#");
+//            System.out.println("#  Serve for "+recipe.getSize()+" people                  ");
+//            System.out.println("#--------------------------------------------------------#");
+//            System.out.println("#  Categories: " + recipe.getCategories()                  );
+//            System.out.println("#--------------------------------------------------------#");
+//            System.out.println("#        Tags: " + recipe.getTags()                        );
+//            System.out.println("#--------------------------------------------------------#");
+//            System.out.println("#                      Ingredients                       #");
+//            getIngredients(recipe);
+//            System.out.println("#                                                        #");
+//            getInstructions(recipe);
+//            System.out.println("##########################################################");
+//        }
+//    }
 
-    private void getInstructions(Recipe recipe) {
-        System.out.println("#                      Instructions                      #");
-        ArrayList<String> instructions = recipe.getInstructions();
-        for (int i = 0; i < instructions.size(); i++) {
-            String instruction = instructions.get(i);
-            System.out.println("#                                                        #");
-            System.out.println("# " + (i+1) +" -> "+ instruction);
-        }
-    }
+//
+//    private void getInstructions(Recipe recipe) {
+//        System.out.println("#                      Instructions                      #");
+//        ArrayList<String> instructions = recipe.getInstructions();
+//        for (int i = 0; i < instructions.size(); i++) {
+//            String instruction = instructions.get(i);
+//            System.out.println("#                                                        #");
+//            System.out.println("# " + (i+1) +" -> "+ instruction);
+//        }
+//    }
 
-    private void getIngredients(Recipe recipe) {
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            System.out.println("#                                                        #");
-            System.out.println("# "+ingredient.getName() + " " + ingredient.getAmount() + " " + ingredient.getUnit());
-        }
-    }
+//    private void getIngredients(Recipe recipe) {
+//        for (Ingredient ingredient : recipe.getIngredients()) {
+//            System.out.println("#                                                        #");
+//            System.out.println("# "+ingredient.getName() + " " + ingredient.getAmount() + " " + ingredient.getUnit());
+//        }
+//    }
 
 
 

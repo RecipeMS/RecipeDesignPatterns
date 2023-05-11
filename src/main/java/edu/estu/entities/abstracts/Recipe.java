@@ -27,12 +27,14 @@ public abstract class Recipe {
     private ArrayList<String> instructions = new ArrayList<>();
 
     public Recipe(String name, String description, int size) {
+        this.id = new Random().nextLong();
         this.name = name;
         this.description = description;
         this.size = size;
 
         categories.add(Category.NONE);
     }
+
 
     public void addInstruction(String instruction) {
         instructions.add(instruction);
@@ -116,6 +118,11 @@ public abstract class Recipe {
 
     public List<Ingredient> getIngredients() {
         return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients.clear();
+        this.ingredients.addAll(ingredients);
     }
 
     public Set<Category> getCategories() {

@@ -1,6 +1,7 @@
 package edu.estu;
 
 import edu.estu.components.MainPage;
+import edu.estu.components.RecipeLister;
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
@@ -90,7 +91,7 @@ public class Main {
         //show all my recipees
         RecipeBook book = RecipeBook.getInstance();
         System.out.println("All recipes : ");
-        book.getAllRecipes();
+        RecipeLister.listAllRecipes();
 
 
 

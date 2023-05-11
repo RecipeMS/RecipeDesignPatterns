@@ -21,7 +21,8 @@ public void showMainPage() {
                 System.out.println("|   2. Search Recipe             |");
                 System.out.println("|   3. Modify Recipe             |");
                 System.out.println("|   4. Rate Recipe               |");
-                System.out.println("|   5. Quit                      |");
+                System.out.println("|   5. List All Recipes          |");
+                System.out.println("|   6. Quit                      |");
                 System.out.println("==================================");
 
                 System.out.print("Enter your choice: ");
@@ -47,16 +48,20 @@ public void showMainPage() {
                         case 3:
                                 // handle option 3
                                 System.out.println("Modify Recipe selected");
+                                ModifyRecipeComponent.handleModifyRecipe();
                                 break;
                         case 4:
                                 // handle option 4
                                 System.out.println("Rate Recipe selected");
                                 break;
                         case 5:
-                                // quit the program
-                                System.out.println("Quitting the program...");
-                                quit = true;
+                                // handle option 5
+                                RecipeLister.listAllRecipes();
                                 break;
+                                case 6:
+                                        // quit the program
+                                        System.out.println("Quitting the program...");
+                                        quit = true;
                         default:
                                 // handle invalid choice
                                 System.out.println("Invalid choice, please try again.");
