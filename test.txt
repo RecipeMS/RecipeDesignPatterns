@@ -1,0 +1,4 @@
+1. inputting string while waiting for int in Style choosing. ---> Radwan
+2. rating-> Decorator dan faydalan. ----> Radwan
+3. add modify Category and tag. ---> Radwan
+4. undo operation.                  ----> Yusuf
