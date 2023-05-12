@@ -31,24 +31,34 @@ public class CreateRecipeComponent {
 
         System.out.print("Please input the size of the recipe : ");
         int size = 0;
-        try {
-            size = Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again.");
+
+        while (true){
+            try {
+                size = Integer.parseInt(System.console().readLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid choice, please try again. (input size as number)");
+            }
         }
+
 
         try {
             recipe = recipeFactory.createRecipes(name, description, size);
+            addCategories(recipe);
+            addTags(recipe);
+            addIngredients(recipe);
+            addInstructions(recipe);
+            System.out.println("Recipe created successfully!");
         } catch (Exception e) {
             System.out.println("Invalid choice, please try again.");
         }
-        //recipe = recipeFactory.createRecipes(name, description, size);
-        addCategories(recipe);
-        addTags(recipe);
-        addIngredients(recipe);
-        addInstructions(recipe);
 
-        System.out.println("Recipe created successfully!");
+
+        //recipe = recipeFactory.createRecipes(name, description, size);
+
+
+
+
 
     }
 
@@ -147,8 +157,8 @@ public class CreateRecipeComponent {
         System.out.println("|   13. UNHEALTHY           14. VEGETARIAN          15. VEGAN   |");
         System.out.println("|   16. GLUTEN_FREE         17. NONE                            |");
 
-        int counter = 0;
-        while (counter < 3) {
+//        int counter = 0;
+        while (recipe.getTags().size() < 3) {
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(System.console().readLine());
             switch (choice) {
@@ -206,7 +216,7 @@ public class CreateRecipeComponent {
                     System.out.println("Invalid choice, please try again.");
                     break;
             }
-            counter++;
+//            counter++;
         }
         return recipe;
 

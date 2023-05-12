@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class IngredientComponent {
-    static Scanner scanner = new Scanner(System.in);
 
     static List<Ingredient>  createIngredientList() {
         List<Ingredient> ingredients = new ArrayList<>();
@@ -33,14 +32,17 @@ public class IngredientComponent {
     }
 
     private static Ingredient createIngredient(String name){
-
         System.out.println("Please input the amount of the ingredient: ");
         double amount;
-        try {
-            amount = scanner.nextDouble();
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again.");
-            return null;
+        while (true) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                amount = scanner.nextDouble();
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid choice, please try again.");
+                return null;
+            }
         }
 
 
@@ -50,11 +52,14 @@ public class IngredientComponent {
         System.out.println("|   4. TABLESPOON           5. TEASPOON             6. KILOGRAM |");
         System.out.println("|   7. LITER                8. PIECE                            |");
         int choice;
-        try {
-            choice = Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again (choose 1-8).");
-            return null;
+        while (true){
+            try {
+                choice = Integer.parseInt(System.console().readLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid choice, please try again (choose 1-8).");
+                return null;
+            }
         }
 
         switch (choice) {

@@ -6,9 +6,32 @@ import edu.estu.entities.concretes.Ingredient;
 import java.util.ArrayList;
 
 public class RecipeeCard {
+
+    // This method is used to print the recipe card for modifying the recipe
     static void printRecipeCard(Recipe recipe, int RecipeIndex){
         System.out.println("##########################################################");
-        System.out.println("#       Recipe No: ("+ RecipeIndex +")   "+recipe.getName()    );
+        System.out.println("#  Recipe No: ("+ RecipeIndex +") "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
+        System.out.println("#--------------------------------------------------------#");
+        System.out.println("#   "+recipe.getDescription()                          );
+        System.out.println("#                                                        #");
+        System.out.println("#--------------------------------------------------------#");
+        System.out.println("#  Serve for "+recipe.getSize()+" people                  ");
+        System.out.println("#--------------------------------------------------------#");
+        System.out.println("#  Categories: " + recipe.getCategories()                  );
+        System.out.println("#--------------------------------------------------------#");
+        System.out.println("#        Tags: " + recipe.getTags()                        );
+        System.out.println("#--------------------------------------------------------#");
+        System.out.println("#                      Ingredients                       #");
+        getIngredients(recipe);
+        System.out.println("#                                                        #");
+        getInstructions(recipe);
+        System.out.println("##########################################################");
+    }
+
+    //This method is used for printing the recipe card in the search results
+    public static void printRecipeCard(Recipe recipe){
+        System.out.println("##########################################################");
+        System.out.println("#  "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
         System.out.println("#--------------------------------------------------------#");
         System.out.println("#   "+recipe.getDescription()                          );
         System.out.println("#                                                        #");
