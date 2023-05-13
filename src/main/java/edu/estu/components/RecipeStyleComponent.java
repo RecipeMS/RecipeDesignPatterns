@@ -23,10 +23,13 @@ public class RecipeStyleComponent {
 
         System.out.print("Enter your choice: ");
         int choice = 0;
-        try {
-            choice = Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again.");
+        while (true){
+            try {
+                choice = Integer.parseInt(System.console().readLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid choice, please try again.");
+            }
         }
 
         switch (choice){

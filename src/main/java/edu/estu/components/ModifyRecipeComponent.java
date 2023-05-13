@@ -68,9 +68,6 @@ public class ModifyRecipeComponent {
         Recipe recipe = selectRecipeToModify();
         ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
         ArrayList<String> instructions = InstructionComponent.createInstructions();
-
-
-
         modifyRecipe.modifyRecipeInstructions(instructions);
         System.out.println("Recipe instructions modified successfully " );
     }
