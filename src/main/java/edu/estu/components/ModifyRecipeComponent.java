@@ -1,11 +1,14 @@
 package edu.estu.components;
 
 import edu.estu.entities.abstracts.Recipe;
+import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
+import edu.estu.entities.concretes.Tag;
 import edu.estu.modules.modification.concretes.ModifyRecipe;
 import edu.estu.modules.search.concretes.RecipeBook;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ModifyRecipeComponent {
@@ -16,7 +19,9 @@ public class ModifyRecipeComponent {
         System.out.println("|   3. Modify Recipe Service Size              |");
         System.out.println("|   4. Modify Recipe Ingredients               |");
         System.out.println("|   5. Modify Recipe Instructions              |");
-        System.out.println("|   6. Exit                                    |");
+        System.out.println("|   6. Modify Recipe Categories                |");
+        System.out.println("|   7. Modify Recipe Tags                      |");
+        System.out.println("|   8. Exit                                    |");
 
         System.out.print("Enter your choice: ");
         int choice = 0;
@@ -53,6 +58,16 @@ public class ModifyRecipeComponent {
                 modifyRecipeInstructions();
                 break;
             case 6:
+                // handle option 6
+                System.out.println("Modify Recipe Categories selected");
+                modifyRecipeCategories();
+                break;
+            case 7:
+                // handle option 7
+                System.out.println("Modify Recipe Tags selected");
+                modifyRecipeTags();
+                break;
+            case 8:
                 // quit the program
                 System.out.println("Quitting Recipe Modification...");
                 break;
@@ -62,6 +77,24 @@ public class ModifyRecipeComponent {
                 break;
         }
 
+    }
+
+    private static void modifyRecipeTags() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+        HashSet<Tag> tags = TagComponent.createTagList();
+        modifyRecipe.modifyRecipeTags(tags);
+
+        System.out.println("Recipe tags modified successfully " );
+    }
+
+    private static void modifyRecipeCategories() {
+        Recipe recipe = selectRecipeToModify();
+        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+        HashSet<Category> categories = CategoryComponent.createCategoryList();
+        modifyRecipe.modifyRecipeCategories(categories);
+
+        System.out.println("Recipe categories modified successfully " );
     }
 
     private static void modifyRecipeInstructions() {
