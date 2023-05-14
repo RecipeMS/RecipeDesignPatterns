@@ -36,10 +36,6 @@ public abstract class Recipe {
     }
 
 
-    //gerek kalmadi buna
-    public void addInstruction(String instruction) {
-        instructions.add(instruction);
-    }
 
     public ArrayList<String> getInstructions() {
         return instructions;
@@ -64,12 +60,25 @@ public abstract class Recipe {
 
     }
 
-
     public void addTag(Tag tag) {
         if (tags.size() < 3) {
             tags.add(tag);
         } else {
             System.out.println("You can't add more than 3 tags");
+        }
+    }
+
+    public void setCategories(HashSet<Category> categories) {
+        this.categories.clear();
+        for (Category category : categories) {
+            this.categories.add(category);
+        }
+    }
+
+    public void setTags(HashSet<Tag> tags) {
+        this.tags.clear();
+        for (Tag tag : tags) {
+            this.tags.add(tag);
         }
     }
 
