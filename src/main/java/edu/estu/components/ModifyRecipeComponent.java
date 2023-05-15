@@ -154,29 +154,7 @@ public class ModifyRecipeComponent {
     }
 
     private static Recipe selectRecipeToModify() {
-        RecipeBook recipeBook = RecipeBook.getInstance();
-        List<Recipe> recipeList = recipeBook.getRecipeList();
-        Recipe recipe = null;
-        RecipeLister.listAllRecipes();
-        System.out.println("Select the recipe you want to modify: ");
-        int choice = 0;
-        while(true) {
-            try {
-                choice = Integer.parseInt(System.console().readLine());
-                break;
-            } catch (Exception e) {
-                System.out.println("Invalid choice, please try again.");
-            }
-        }
-
-        if(choice >= recipeList.size() || choice < 0) {
-            System.out.println("Invalid choice, please try again.");
-            selectRecipeToModify();
-        }else {
-            recipe = recipeList.get(choice);
-        }
-
-        return recipe;
+        return SelectRecipeComponent.selectRecipe();
     }
 
 

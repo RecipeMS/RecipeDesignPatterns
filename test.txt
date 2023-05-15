@@ -16,15 +16,4 @@
 4. add setTags method in Recipe class to use it in ModifyRecipe class.
 5. add setCategory method in Recipe class to use it in ModifyRecipe class.
 
-Fix:
-1. In ModifyRecipeComponent class, in selectrecipe method, invalid input makes the program crash. fixed by adding while
-on try catch block. In code 163.
-2. In ModifyRecipeComponent class, when you try to enter invalid input in modifyRecipe method, the program does not work.
-Fixed by adding while in 28 with while loop.
-3. In ModifyRecipeComponent class, change the code 172 that  ( choice > recipes.size() || choice < 0 ) to
-( choice >= recipes.size() || choice < 0 ) to fix the bug that when you enter 1 to select recipe even if there is only 1 recipe,
 
-Error :
-1. When try to create recipe, if you enter invalid input, the program starts again.
-2. When you try to modify recipe, if you enter more than the size of the recipe, then if you enter valid input and valid name
-the program crashes.

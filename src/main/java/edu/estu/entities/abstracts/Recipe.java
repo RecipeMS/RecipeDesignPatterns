@@ -4,6 +4,8 @@ import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
 import edu.estu.modules.creation.concretes.RecipeType;
+import edu.estu.modules.rating.abstracts.RatingComputationStrategy;
+import edu.estu.modules.rating.concretes.AverageRatingStrategy;
 
 import java.util.*;
 
@@ -26,14 +28,49 @@ public abstract class Recipe {
 
     private ArrayList<String> instructions = new ArrayList<>();
 
+
+    private RatingComputationStrategy ratingComputationStrategy;
+    private int totalRatings;
+    private double averageRating;
+
     public Recipe(String name, String description, int size) {
         this.id = new Random().nextLong();
         this.name = name;
         this.description = description;
         this.size = size;
-
+        ratingComputationStrategy = new AverageRatingStrategy(); // default strategy
         categories.add(Category.NONE);
     }
+
+    // Handling ratings and its impact with strategy pattern
+    public void setRatingComputationStrategy(RatingComputationStrategy strategy) {
+        ratingComputationStrategy = strategy;
+    }
+
+    public void addRating(int rating) {
+        // Update average rating and total ratings
+        ratingComputationStrategy.updateRatings(this, rating);
+    }
+
+    public double getImpact() {
+        return ratingComputationStrategy.computeImpact(this);
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public int getTotalRatings() {
+        return totalRatings;
+    }
+
+    public void setTotalRatings(int totalRatings) {
+        this.totalRatings = totalRatings;
+    }
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
 
 
 
