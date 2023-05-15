@@ -25,12 +25,14 @@ public class ModifyRecipeComponent {
 
         System.out.print("Enter your choice: ");
         int choice = 0;
-        try {
-            choice = Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again.");
+        while(true) {
+            try {
+                choice = Integer.parseInt(System.console().readLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid choice, please try again.");
+            }
         }
-
         switch (choice) {
             case 1:
                 // handle option 1
@@ -152,7 +154,6 @@ public class ModifyRecipeComponent {
     }
 
     private static Recipe selectRecipeToModify() {
-
         return SelectRecipeComponent.selectRecipe();
     }
 

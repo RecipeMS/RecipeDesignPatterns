@@ -17,11 +17,3 @@
 5. add setCategory method in Recipe class to use it in ModifyRecipe class.
 
 
-
-
-
-Done in Rating branch:
-1. move select recipe to its own class.
-2. finish recipe ratings.
-3.
-
