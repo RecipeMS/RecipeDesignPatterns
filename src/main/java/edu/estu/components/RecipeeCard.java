@@ -2,6 +2,7 @@ package edu.estu.components;
 
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Ingredient;
+import edu.estu.modules.rating.concretes.TotalRatingsStrategy;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,9 @@ public class RecipeeCard {
     // This method is used to print the recipe card for modifying the recipe
     static void printRecipeCard(Recipe recipe, int RecipeIndex){
         System.out.println("##########################################################");
-        System.out.println("#  Recipe No: ("+ RecipeIndex +") "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
+        System.out.println("#  "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
+        System.out.println("#--------------------------------------------------------#");
+        System.out.println("#   Rating : "+recipe.getAverageRating() + " Rated by: "+ recipe.getTotalRatings() +" people");
         System.out.println("#--------------------------------------------------------#");
         System.out.println("#   "+recipe.getDescription()                          );
         System.out.println("#                                                        #");
@@ -33,6 +36,8 @@ public class RecipeeCard {
         System.out.println("##########################################################");
         System.out.println("#  "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
         System.out.println("#--------------------------------------------------------#");
+        System.out.println("#   Rating : "+recipe.getAverageRating() + " Rated by: "+ recipe.getTotalRatings() +" people");
+        System.out.println("#--------------------------------------------------------#");
         System.out.println("#   "+recipe.getDescription()                          );
         System.out.println("#                                                        #");
         System.out.println("#--------------------------------------------------------#");
@@ -46,6 +51,12 @@ public class RecipeeCard {
         getIngredients(recipe);
         System.out.println("#                                                        #");
         getInstructions(recipe);
+        System.out.println("##########################################################");
+    }
+
+    public static void printRecipeForAverageRating(Recipe recipe){
+        System.out.println("##########################################################");
+        System.out.println("#  "+recipe.getName() +" Rate: "+ recipe.getImpact()+ " On average");
         System.out.println("##########################################################");
     }
 

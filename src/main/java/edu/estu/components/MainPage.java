@@ -1,13 +1,6 @@
 package edu.estu.components;
 
-import edu.estu.entities.abstracts.Recipe;
-import edu.estu.entities.concretes.Category;
-import edu.estu.entities.concretes.Ingredient;
-import edu.estu.entities.concretes.Tag;
-import edu.estu.entities.concretes.Unit;
-import edu.estu.modules.creation.abstracts.RecipeFactory;
 
-import java.util.Scanner;
 
 public class MainPage {
 
@@ -22,7 +15,8 @@ public static void showMainPage() {
                 System.out.println("|   3. Modify Recipe             |");
                 System.out.println("|   4. Rate Recipe               |");
                 System.out.println("|   5. List All Recipes          |");
-                System.out.println("|   6. Quit                      |");
+                System.out.println("|   6. Show Ratings              |");
+                System.out.println("|   7. Quit                      |");
                 System.out.println("==================================");
 
                 System.out.print("Enter your choice: ");
@@ -53,12 +47,18 @@ public static void showMainPage() {
                         case 4:
                                 // handle option 4
                                 System.out.println("Rate Recipe selected");
+                                RateRecipeComponent.handleRateRecipe();
                                 break;
                         case 5:
                                 // handle option 5
                                 RecipeLister.listAllRecipes();
                                 break;
-                                case 6:
+                        case 6:
+                                // handle option 6
+                                System.out.println("Show Ratings selected");
+                                RecipeRatingComponent.handleRecipeRating();
+                                break;
+                        case 7:
                                         // quit the program
                                         System.out.println("Quitting the program...");
                                         quit = true;
