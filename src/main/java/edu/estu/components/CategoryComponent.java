@@ -24,6 +24,7 @@ public class CategoryComponent {
         while (categories.size() < 3) {
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(System.console().readLine());
+            if(choice == 24) break;
             switch (choice) {
                 case 1:
                     categories.add(Category.BREAKFAST);

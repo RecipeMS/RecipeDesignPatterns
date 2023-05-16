@@ -1,6 +1,6 @@
 package edu.estu.modules.search.concretes;
 
-import edu.estu.components.RecipeeCard;
+import edu.estu.components.RecipeCardComponent;
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
@@ -26,7 +26,7 @@ public class RecipeSearch {
         else {
             for (Recipe recipe : result) {
 //                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
-                RecipeeCard.printRecipeCard(recipe );
+                RecipeCardComponent.printRecipeCard(recipe );
             }
         }
     }

@@ -5,14 +5,17 @@ import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
 import edu.estu.modules.modification.concretes.ModifyRecipe;
-import edu.estu.modules.search.concretes.RecipeBook;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class ModifyRecipeComponent {
-    static void  handleModifyRecipe() {
+
+    private  Recipe recipe = selectRecipeToModify();
+     ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+
+     void  handleModifyRecipe() {
         System.out.println("**************** Modify Recipe ****************");
         System.out.println("|   1. Modify Recipe Name                      |");
         System.out.println("|   2. Modify Recipe Description               |");
@@ -22,9 +25,10 @@ public class ModifyRecipeComponent {
         System.out.println("|   6. Modify Recipe Categories                |");
         System.out.println("|   7. Modify Recipe Tags                      |");
         System.out.println("|   8. Exit                                    |");
+        System.out.println("************************************************");
 
         System.out.print("Enter your choice: ");
-        int choice = 0;
+        int choice;
         while(true) {
             try {
                 choice = Integer.parseInt(System.console().readLine());
@@ -81,46 +85,71 @@ public class ModifyRecipeComponent {
 
     }
 
-    private static void modifyRecipeTags() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+    private  void modifyRecipeTags() {
         HashSet<Tag> tags = TagComponent.createTagList();
+
+        HashSet<Tag> oldTags = new HashSet<>();
+        for (Tag tag : recipe.getTags()) {
+            oldTags.add(tag);
+        }
+
         modifyRecipe.modifyRecipeTags(tags);
 
         System.out.println("Recipe tags modified successfully " );
+        System.out.println("Here is your new recipe: ");
+        RecipeCardComponent.printRecipeCard(recipe);
+        undoModification(oldTags, "tags");
+
     }
 
-    private static void modifyRecipeCategories() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+    private  void modifyRecipeCategories() {
         HashSet<Category> categories = CategoryComponent.createCategoryList();
-        modifyRecipe.modifyRecipeCategories(categories);
 
+        HashSet<Category> oldCategories = new HashSet<>();
+
+        for (Category category : recipe.getCategories()) {
+            oldCategories.add(category);
+        }
+
+
+        modifyRecipe.modifyRecipeCategories(categories);
         System.out.println("Recipe categories modified successfully " );
+        RecipeCardComponent.printRecipeCard(recipe);
+
+        undoModification( oldCategories, "categories");
     }
 
-    private static void modifyRecipeInstructions() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+
+    private  void modifyRecipeInstructions() {
         ArrayList<String> instructions = InstructionComponent.createInstructions();
+
+        ArrayList<String> oldInstructions = recipe.getInstructions();
+
         modifyRecipe.modifyRecipeInstructions(instructions);
         System.out.println("Recipe instructions modified successfully " );
+        System.out.println("Here is your new recipe: ");
+        RecipeCardComponent.printRecipeCard(recipe);
+        undoModification( oldInstructions, "instructions");
     }
 
-    private static void modifyRecipeIngredients() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
+    private  void modifyRecipeIngredients() {
         List<Ingredient> ingredients = IngredientComponent.createIngredientList();
+
+        List<Ingredient> oldIngredients = recipe.getIngredients();
+
 
         modifyRecipe.modifyRecipeIngredients(ingredients);
         System.out.println("Recipe ingredients modified successfully " );
+        System.out.println("Here is your new recipe: ");
+        RecipeCardComponent.printRecipeCard(recipe);
+        undoModification( oldIngredients, "ingredients");
     }
 
-    private static void modifyRecipeServiceSize() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
-
+    private  void modifyRecipeServiceSize() {
         System.out.println("Enter new service size: ");
+
+        int oldServiceSize = recipe.getSize();
+
         int newServiceSize = 0;
         try {
             newServiceSize = Integer.parseInt(System.console().readLine());
@@ -129,31 +158,82 @@ public class ModifyRecipeComponent {
         }
         modifyRecipe.modifyRecipeSize(newServiceSize);
         System.out.println("Recipe service size changed to: " + recipe.getSize());
+        System.out.println("Here is your new recipe: ");
+        RecipeCardComponent.printRecipeCard(recipe);
+        undoModification( oldServiceSize, "size");
     }
 
-    private static void modifyRecipeDescription() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
-
-
+    private  void modifyRecipeDescription() {
         System.out.println("Enter new description: ");
+
+        String oldDescription = recipe.getDescription();
+
+
+
         String newDescription = System.console().readLine();
         modifyRecipe.modifyRecipeDescription(newDescription);
         System.out.println("Recipe description changed to: " + recipe.getDescription());
+        System.out.println("Here is your new recipe: ");
+        RecipeCardComponent.printRecipeCard(recipe);
+        undoModification(oldDescription, "description");
     }
 
-    private static void modifyRecipeName() {
-        Recipe recipe = selectRecipeToModify();
-        ModifyRecipe modifyRecipe = new ModifyRecipe(recipe);
-
-
+    private  void modifyRecipeName() {
         System.out.println("Enter new name: ");
+
+        String oldName = recipe.getName();
+
         String newName = System.console().readLine();
         modifyRecipe.modifyRecipeName(newName);
         System.out.println("Recipe name changed to: " + recipe.getName());
+        System.out.println("Here is your new recipe: ");
+        RecipeCardComponent.printRecipeCard(recipe);
+        undoModification(oldName, "name");
     }
 
-    private static Recipe selectRecipeToModify() {
+    private  void undoModification(Object a, String type) {
+        System.out.println("Do you want to undo the modification? (y/n)");
+        String choice = System.console().readLine().toLowerCase();
+
+        if(choice.startsWith("y")) {
+            System.out.println("Undoing modification...");
+
+            switch (type){
+                case "name":
+                    modifyRecipe.modifyRecipeName((String) a);
+                    break;
+                case "description":
+                    modifyRecipe.modifyRecipeDescription((String) a);
+                    break;
+                case "size":
+                    modifyRecipe.modifyRecipeSize((int) a);
+                    break;
+                case "ingredients":
+                    modifyRecipe.modifyRecipeIngredients((List<Ingredient>) a);
+                    break;
+                case "instructions":
+                    modifyRecipe.modifyRecipeInstructions((ArrayList<String>) a);
+                    break;
+                case "categories":
+                    modifyRecipe.modifyRecipeCategories((HashSet<Category>) a);
+                    break;
+                case "tags":
+                    modifyRecipe.modifyRecipeTags((HashSet<Tag>) a);
+                    break;
+                default:
+                    System.out.println("Invalid choice, please try again.");
+                    break;
+
+            }
+            RecipeCardComponent.printRecipeCard(recipe);
+        } else if(choice.startsWith("n")) {
+            System.out.println("Modification saved.");
+        } else {
+            System.out.println("Invalid choice, please try again.");
+            undoModification(a, type);
+        }
+    }
+    private  Recipe selectRecipeToModify() {
         return SelectRecipeComponent.selectRecipe();
     }
 

@@ -14,7 +14,7 @@ public class RecipeLister {
         Recipe recipe;
         for (int i = 0; i < recipeList.size(); i++) {
             recipe = recipeList.get(i);
-            RecipeeCard.printRecipeCard(recipe, i);
+            RecipeCardComponent.printRecipeCard(recipe, i);
         }
     }
 
@@ -23,7 +23,7 @@ public class RecipeLister {
         Recipe recipe;
         for (int i = 0; i < recipeList.size(); i++) {
             recipe = recipeList.get(i);
-            RecipeeCard.printRecipeForAverageRating(recipe);
+            RecipeCardComponent.printRecipeForAverageRating(recipe);
         }
     }
 
@@ -33,7 +33,7 @@ public class RecipeLister {
         for (int i = 0; i < recipeList.size(); i++) {
             recipe = recipeList.get(i);
             recipe.setRatingComputationStrategy(new TotalRatingsStrategy());
-            RecipeeCard.printRecipeForAverageRating(recipe);
+            RecipeCardComponent.printRecipeForAverageRating(recipe);
         }
     }
 

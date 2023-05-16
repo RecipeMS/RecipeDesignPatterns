@@ -2,18 +2,18 @@ package edu.estu.components;
 
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Ingredient;
-import edu.estu.modules.rating.concretes.TotalRatingsStrategy;
 
 import java.util.ArrayList;
 
-public class RecipeeCard {
+public class RecipeCardComponent {
 
     // This method is used to print the recipe card for modifying the recipe
-    static void printRecipeCard(Recipe recipe, int RecipeIndex){
+    static void printRecipeCard(Recipe recipe, int recipeIndex) {
         System.out.println("##########################################################");
-        System.out.println("#  "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
+        System.out.println("#              Recipe No: " +recipeIndex +
+                         "\n# Recipe Name: "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
         System.out.println("#--------------------------------------------------------#");
-        System.out.println("#   Rating : "+recipe.getAverageRating() + " Rated by: "+ recipe.getTotalRatings() +" people");
+        System.out.println("#   Rating : "+recipe.getAverageRating() );
         System.out.println("#--------------------------------------------------------#");
         System.out.println("#   "+recipe.getDescription()                          );
         System.out.println("#                                                        #");
@@ -56,7 +56,7 @@ public class RecipeeCard {
 
     public static void printRecipeForAverageRating(Recipe recipe){
         System.out.println("##########################################################");
-        System.out.println("#  "+recipe.getName() +" Rate: "+ recipe.getImpact()+ " On average");
+        System.out.println("#  Recipe Name: "+recipe.getName() +"      Rate: "+ recipe.getImpact()+ "  #");
         System.out.println("##########################################################");
     }
 

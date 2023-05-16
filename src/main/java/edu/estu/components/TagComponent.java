@@ -24,6 +24,7 @@ public class TagComponent {
         while (tagList.size() < 3) {
             System.out.print("Enter your choice: ");
             int choice = Integer.parseInt(System.console().readLine());
+            if(choice == 17) break;
             switch (choice) {
                 case 1:
                     tagList.add(Tag.SPICY);

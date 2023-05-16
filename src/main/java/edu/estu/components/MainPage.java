@@ -6,6 +6,8 @@ public class MainPage {
 
 public static void showMainPage() {
 
+
+
         boolean quit = false;
 
         while (!quit) {
@@ -42,7 +44,8 @@ public static void showMainPage() {
                         case 3:
                                 // handle option 3
                                 System.out.println("Modify Recipe selected");
-                                ModifyRecipeComponent.handleModifyRecipe();
+                                ModifyRecipeComponent handleModifyRecipe = new ModifyRecipeComponent();
+                                handleModifyRecipe.handleModifyRecipe();
                                 break;
                         case 4:
                                 // handle option 4
