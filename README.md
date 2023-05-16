@@ -10,6 +10,6 @@
 ### then run
 
 ```sh 
- java -cp .\target\RecipeDesignPatterns-1.0-SNAPSHOT.jar edu.estu.Main
+  java -jar target\project.jar
  ```
 
