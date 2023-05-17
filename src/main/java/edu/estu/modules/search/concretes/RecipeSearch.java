@@ -5,12 +5,13 @@ import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.Category;
 import edu.estu.entities.concretes.Ingredient;
 import edu.estu.entities.concretes.Tag;
+import edu.estu.modules.singleton.RecipeBookSingleton;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class RecipeSearch {
-    List<Recipe> recipeList = RecipeBook.getInstance().getRecipeList();
+    List<Recipe> recipeList = RecipeBookSingleton.getInstance().getRecipeList();
 
 
     public void searchRecipeByName(String name) {
@@ -25,7 +26,6 @@ public class RecipeSearch {
 
         else {
             for (Recipe recipe : result) {
-//                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
                 RecipeCardComponent.printRecipeCard(recipe );
             }
         }
@@ -45,7 +45,7 @@ public class RecipeSearch {
 
         else {
             for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+                RecipeCardComponent.printRecipeCard(recipe );
             }
         }
     }
@@ -64,7 +64,7 @@ public class RecipeSearch {
 
         else {
             for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+                RecipeCardComponent.printRecipeCard(recipe );
             }
         }
     }
@@ -83,7 +83,7 @@ public class RecipeSearch {
 
         else {
             for (Recipe recipe : result) {
-                System.out.println(recipe.getName() + "  " + recipe.getDescription() + "  " + recipe.getSize() + " " + recipe.getCategories() + " " + recipe.getTags());
+                RecipeCardComponent.printRecipeCard(recipe );
             }
         }
     }

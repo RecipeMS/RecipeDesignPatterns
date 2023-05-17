@@ -3,7 +3,7 @@ package edu.estu.modules.creation.concretes;
 import edu.estu.entities.abstracts.Recipe;
 import edu.estu.entities.concretes.MiddleEasternRecipe;
 import edu.estu.modules.creation.abstracts.RecipeFactory;
-import edu.estu.modules.search.concretes.RecipeBook;
+import edu.estu.modules.singleton.RecipeBookSingleton;
 
 public class MiddleEasternRecipeFactory extends RecipeFactory {
     Recipe recipe;
@@ -15,7 +15,7 @@ public class MiddleEasternRecipeFactory extends RecipeFactory {
     @Override
     public Recipe createRecipes(String name, String description, int size) {
         recipe = new MiddleEasternRecipe(name, description, size);
-        RecipeBook.getInstance().addRecipe(recipe);
+        RecipeBookSingleton.getInstance().addRecipe(recipe);
         return recipe;
     }
 }

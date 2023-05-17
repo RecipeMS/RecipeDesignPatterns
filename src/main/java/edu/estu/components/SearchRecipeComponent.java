@@ -12,14 +12,18 @@ public class SearchRecipeComponent {
         System.out.println("|   2. Search Recipe By Category               |");
         System.out.println("|   3. Search Recipe By Ingredient             |");
         System.out.println("|   4. Search Recipe By Tag                    |");
+        System.out.println("************************************************");
 
         System.out.print("Enter your choice: ");
         int choice;
-        try {
-            choice = Integer.parseInt(System.console().readLine());
-        } catch (Exception e) {
-            System.out.println("Invalid choice, please try again.");
-            return;
+        while (true) {
+            try {
+                choice = Integer.parseInt(System.console().readLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid choice, please try again.");
+                return;
+            }
         }
 
         switch (choice) {
@@ -44,9 +48,10 @@ public class SearchRecipeComponent {
 
     private static void searchRecipeByTag() {
         System.out.println("********** Search Recipe By Tag **********");
-        System.out.println("Enter tag name: ");
-        String name = System.console().readLine();
-        search.searchRecipeByTag(Tag.valueOf(name.toUpperCase()));
+        Tag tag = TagComponent.selectTag();
+
+
+        search.searchRecipeByTag(tag);
         System.out.println("******************************************");
 
     }
@@ -61,15 +66,9 @@ public class SearchRecipeComponent {
 
     private static void searchRecipeByCategory() {
         System.out.println("********** Search Recipe By Category **********");
-        System.out.println("Enter category name: ");
-        String name;
-        try {
-            name = System.console().readLine();
-        } catch (Exception e) {
-            System.out.println("Invalid category name, please try again.");
-            return;
-        }
-        search.searchRecipeByCategory(Category.valueOf(name.toUpperCase()));
+        Category category = CategoryComponent.selectCategory();
+
+        search.searchRecipeByCategory(category);
         System.out.println("***********************************************");
     }
 

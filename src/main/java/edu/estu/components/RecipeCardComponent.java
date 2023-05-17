@@ -36,7 +36,7 @@ public class RecipeCardComponent {
         System.out.println("##########################################################");
         System.out.println("#  "+recipe.getName() +" from the "+ recipe.getType() +" Cuisine");
         System.out.println("#--------------------------------------------------------#");
-        System.out.println("#   Rating : "+recipe.getAverageRating() + " Rated by: "+ recipe.getTotalRatings() +" people");
+        System.out.println("#   Rating : "+recipe.getAverageRating() );
         System.out.println("#--------------------------------------------------------#");
         System.out.println("#   "+recipe.getDescription()                          );
         System.out.println("#                                                        #");

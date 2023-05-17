@@ -9,7 +9,7 @@ public class RateRecipeComponent {
         Recipe recipe = SelectRecipeComponent.selectRecipe();
         System.out.println("***********************************************");
 
-        System.out.println("Enter your rating: ");
+        System.out.println("Enter your rating (0-5): ");
 
         int rating;
         while (true){

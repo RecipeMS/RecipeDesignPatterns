@@ -1,18 +1,18 @@
 package edu.estu.components;
 
 import edu.estu.entities.abstracts.Recipe;
-import edu.estu.modules.search.concretes.RecipeBook;
+import edu.estu.modules.singleton.RecipeBookSingleton;
 
 import java.util.List;
 
 public class SelectRecipeComponent {
     public static Recipe selectRecipe() {
-        RecipeBook recipeBook = RecipeBook.getInstance();
-        List<Recipe> recipeList = recipeBook.getRecipeList();
+        RecipeBookSingleton recipeBookSingleton = RecipeBookSingleton.getInstance();
+        List<Recipe> recipeList = recipeBookSingleton.getRecipeList();
         Recipe recipe;
 
         RecipeLister.listAllRecipes();
-        System.out.println("Select the recipe you want: ");
+        System.out.println("Select the recipe you want (Enter Recipe No): ");
         int choice;
 
         while (true){

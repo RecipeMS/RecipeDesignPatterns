@@ -12,7 +12,7 @@ public class TagComponent {
 
 
         System.out.println("***************************** TAGS *****************************");
-        System.out.println("Please input the tag of the recipe: ");
+        System.out.println("Please select up to 3 different tags from the list below: ");
         System.out.println("|   1. SPICY                2. SWEET                3. SOUR     |");
         System.out.println("|   4. SALTY                5. BITTER               6. FRESH    |");
         System.out.println("|   7. COLD                 8. HOT                  9. QUICK    |");
@@ -83,5 +83,67 @@ public class TagComponent {
         }
 
         return tagList;
+    }
+
+    public static Tag selectTag() {
+        System.out.println("***************************** TAGS *****************************");
+        System.out.println("Please select the tag of the recipe:");
+        System.out.println("|   1. SPICY                2. SWEET                3. SOUR     |");
+        System.out.println("|   4. SALTY                5. BITTER               6. FRESH    |");
+        System.out.println("|   7. COLD                 8. HOT                  9. QUICK    |");
+        System.out.println("|   10. EASY                11. HARD                12. HEALTHY |");
+        System.out.println("|   13. UNHEALTHY           14. VEGETARIAN          15. VEGAN   |");
+        System.out.println("|   16. GLUTEN_FREE                                             |");
+
+
+        System.out.print("Enter your choice: ");
+        int choice;
+        while (true) {
+            try {
+                choice = Integer.parseInt(System.console().readLine());
+                if(choice > 0 && choice < 17) break;
+                else System.out.println("Invalid choice (1-16)");
+            } catch (Exception e) {
+                System.out.println("Invalid choice (input a number)");
+            }
+        }
+        switch (choice) {
+            case 1:
+                return Tag.SPICY;
+            case 2:
+                return Tag.SWEET;
+            case 3:
+                return Tag.SOUR;
+            case 4:
+                return Tag.SALTY;
+            case 5:
+                return Tag.BITTER;
+            case 6:
+                return Tag.FRESH;
+            case 7:
+                return Tag.COLD;
+            case 8:
+                return Tag.HOT;
+            case 9:
+                return Tag.QUICK;
+            case 10:
+                return Tag.EASY;
+            case 11:
+                return Tag.HARD;
+            case 12:
+                return Tag.HEALTHY;
+            case 13:
+                return Tag.UNHEALTHY;
+            case 14:
+                return Tag.VEGETARIAN;
+            case 15:
+                return Tag.VEGAN;
+            case 16:
+                return Tag.GLUTEN_FREE;
+            default:
+                System.out.println("Invalid choice");
+                return null;
+        }
+
     }
 }
