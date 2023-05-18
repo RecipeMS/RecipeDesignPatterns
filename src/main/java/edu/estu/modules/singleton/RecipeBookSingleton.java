@@ -10,7 +10,6 @@ public class RecipeBookSingleton {
     private final List<Recipe> recipeList = new LinkedList<>();
     private RecipeBookSingleton() {
     }
-
     public List<Recipe> getRecipeList() {
         return recipeList;
     }
